@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Kadai</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+    <header nav="nav" class="navbar navbar-expand-md navbar-dark bg-dark">
+      <div class="container">
+        <nav class="navbar-nav navbar-left">
+          <span>Bookers</span>
+        </nav>
+        <nav>
+          <ul class="nav navbar-nav navbar-right">
+            <% if user_signed_in? %>
+              <li>
+                <i class="fa fa-home"></i>
+                <%= link_to user_path(current_user) do %>
+                Home
+              <% end %>
+            </li>
+            <li>
+              <i class="fa fa-user"></i>
+              <%= link_to users_path do %>
+              Users
+            <% end %>
+          </li>
+          <li>
+            <i class="fa fa-book"></i>
+            <%= link_to books_path do %>
+            Books
+            <% end %>
+        </li>
+        <li>
+          <i class="fa fa-sign-out"></i>
+          <%= link_to destroy_user_session_path, :method => :delete do %>
+          logout
+        <% end %>
+      </li>
+    <% else%>
+      <li>
+        <%= link_to root_path do %>
+        <i class="fa fa-home"></i>
+        Home
+      <% end %>
+    </li>
+    <li>
+      <%= link_to home_about_path do %>
+      <i class="fa fa-link"></i>
+      About
+    <% end %>
+  </li>
+  <li>
+    <%= link_to new_user_registration_path do %>
+    <i class="fa fa-user-plus"></i>
+    sign up
+  <% end %>
+</li>
+<li>
+  <%= link_to new_user_session_path do %>
+  <i class="fa fa-sign-language"></i>
+  login
+  <% end %>
+</li>
+</ul>
+<% end%>
+</nav>
+</div>
+</header>
+<p class="notice"><%= notice %></p>
+<p class="alert"><%= alert %></p>
+<%= yield %>
+
+<footer>
+<div class="container">
+<div class="row">
+<div class="col-xs-3 col-xs-offset-9">
+<p>CopyRight Infratop.inc</p>
+</div>
+</footer>
+</body>
+</html>

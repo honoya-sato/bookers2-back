@@ -1,0 +1,50 @@
+
+
+<div class="profile-container">
+  <h2>User Info</h2>
+  <%= attachment_image_tag user, :profile_image, :fill, 60, 60, format: 'jpeg', class: "img-circle pull-left profile-img", fallback: "no_image.jpg" %>
+  <table class="table table-sm">
+    <tbody>
+      <tr>
+        <td>
+          <p>name</p>
+        </td>
+        <td>
+          <p class="profile-name"><%= user.name %></p>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <p>introduction</p>
+        </td>
+        <td>
+          <p class="profile-introduction"><%= user.introduction %></p>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <p>
+    <%= link_to edit_user_path(user),class: "btn btn-secondary btn-light btn-block" do %>
+    <i class="fa fa-wrench"></i>
+  <% end %>
+</p>
+</div>
+<div>
+<h2>New Book</h2>
+<%= form_for Book.new do |f| %>
+
+
+  <div>
+  <%= f.label :title, 'title' %>
+  </div>
+  <div>
+  <%= f.text_field :title %>
+  </div>
+  <div>
+  <%= f.label :body, '書評' %>
+  </div>
+  <div>
+  <%= f.text_area :body %>
+  </div>
+  <%= f.submit 'Create book',class: "btn btn-primary" %>
+<% end %>
